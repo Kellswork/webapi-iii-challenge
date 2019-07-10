@@ -49,7 +49,7 @@ router.put('/:id', validateUserId, validateUser, async (req, res) => {
 async function validateUserId(req, res, next) {
   const { id } = req.params;
   if (!Number(id)) {
-    return res.status(400).json({ error: 'the id provieded is not a number' });
+    return res.status(400).json({ error: 'the id provided is not a number' });
   }
   const user = await db.getById(id);
   if (!user) {
