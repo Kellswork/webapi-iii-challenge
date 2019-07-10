@@ -1,5 +1,5 @@
 const express = require('express');
-
+const user = require('./users/userRouter');
 const server = express();
 
 server.get('/', (req, res) => {
@@ -10,13 +10,14 @@ server.get('/', (req, res) => {
 
 function logger(req, res, next) {
   console.log(
-    `[${newDate().toISOString()}] ${req.method} to ${req.url} from ${req.get(
-      'Origin'
+    `[${new Date().toISOString()}] ${req.method} to ${req.url} from ${req.get(
+      'origin'
     )}`
   );
   next();
 }
 
 server.use(logger);
+server.use('/api/user', user);
 
 module.exports = server;
