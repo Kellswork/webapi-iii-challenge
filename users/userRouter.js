@@ -47,6 +47,7 @@ router.put('/:id', validateUserId, validateUser, async (req, res) => {
 //custom middleware
 
 async function validateUserId(req, res, next) {
+ // req.user
   const { id } = req.params;
   if (!Number(id)) {
     return res.status(400).json({ error: 'the id provided is not a number' });
