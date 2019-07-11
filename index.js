@@ -1,4 +1,8 @@
 // code away!
+require('dotenv').config();
+
 const server = require('./server');
 
-server.listen(4100, () => console.log('server lisetning on port 4100'));
+const port = process.env.PORT || 5000;
+
+server.listen(port, () => console.log(`server lisetning on port ${port}`));
